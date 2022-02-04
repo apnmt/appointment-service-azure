@@ -53,3 +53,4 @@ jobs:
           connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           name: appointmentservice.jar
           path: target/appointmentservice-${RELEASE_VERSION}.jar
+          container: apnmt-applications
