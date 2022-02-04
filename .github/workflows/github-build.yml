@@ -50,7 +50,7 @@ jobs:
       - name: Upload to Blob Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.2.0
         with:
-          source_dir: target/appointmentservice-${RELEASE_VERSION}.jar
-          container_name: apnmt-applications
+          source_dir: 'target'
+          container_name: 'apnmt-applications'
           connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           sync: true
