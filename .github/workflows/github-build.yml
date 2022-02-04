@@ -52,4 +52,4 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az storage blob upload --account-name apnmt --account-key ${{ secrets.AZURE_ACCOUNT_KEY }} --container-name apnmt-applications --file appointmentservice-${RELEASE_VERSION}.jar --name appointmentservice.jar
+            az storage blob upload --account-name apnmt --account-key ${{ secrets.AZURE_ACCOUNT_KEY }} --container-name apnmt-applications --file target/appointmentservice-${RELEASE_VERSION}.jar --name appointmentservice.jar
