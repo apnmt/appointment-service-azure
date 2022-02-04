@@ -48,9 +48,8 @@ jobs:
       - name: Package application
         run: ./mvnw package -Pprod -DskipTests
       - name: Upload to Blob Storage
-        uses: bacongobbler/azure-blob-storage-upload@v1.2.0
+        uses: azure/CLI@v1
         with:
-          source_dir: 'target'
-          container_name: 'apnmt-applications'
-          connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          sync: true
+          azcliversion: 2.30.0
+          inlineScript: |
+            az storage blob upload --account-name apnmt --account-key ${{ secrets.AZURE_ACCOUNT_KEY }} --container-name apnmt-applications --file appointmentservice-${RELEASE_VERSION}.jar --name appointmentservice.jar
