@@ -48,9 +48,9 @@ jobs:
       - name: Package application
         run: ./mvnw package -Pprod -DskipTests
       - name: Upload to Blob Storage
-        uses: fixpoint/azblob-upload-artifact@v4
+        uses: bacongobbler/azure-blob-storage-upload@v1.2.0
         with:
-          connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          name: appointmentservice.jar
-          path: target/appointmentservice-${RELEASE_VERSION}.jar
-          container: apnmt-applications
+          source_dir: target/appointmentservice-${RELEASE_VERSION}.jar
+          container_name: apnmt-applications
+          connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          sync: true
