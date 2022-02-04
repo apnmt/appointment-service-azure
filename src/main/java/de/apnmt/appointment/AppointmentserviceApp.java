@@ -1,12 +1,6 @@
 package de.apnmt.appointment;
 
 import de.apnmt.appointment.config.ApplicationProperties;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +12,14 @@ import org.springframework.core.env.Environment;
 import tech.jhipster.config.DefaultProfileUtil;
 import tech.jhipster.config.JHipsterConstants;
 
-@SpringBootApplication(scanBasePackages = {"de.apnmt.common", "de.apnmt.aws.common", "de.apnmt.appointment.common", "de.apnmt.appointment"})
+import javax.annotation.PostConstruct;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+
+@SpringBootApplication(scanBasePackages = {"de.apnmt.common", "de.apnmt.azure.common", "de.apnmt.appointment.common", "de.apnmt.appointment"})
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
 public class AppointmentserviceApp {
 
