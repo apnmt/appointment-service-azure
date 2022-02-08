@@ -155,6 +155,10 @@ spring:
   output:
     ansi:
       console-available: true
+  jms:
+    servicebus:
+      connection-string: changeit
+      pricing-tier: changeit
 
 server:
   servlet:
