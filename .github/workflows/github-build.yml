@@ -53,6 +53,9 @@ jobs:
           curl https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.6/applicationinsights-agent-3.2.6.jar --output applicationinsights-agent.jar
       - name: Zip JARs
         run: |
+          pwd
+          ls -la
+          cd target
           mv appointmentservice-${RELEASE_VERSION}.jar appointmentservice.jar
           zip appointmentservice.zip appointmentservice.jar applicationinsights-agent.jar
       - name: Upload to Blob Storage
@@ -60,4 +63,4 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az storage blob upload --account-name apnmt --account-key ${{ secrets.AZURE_ACCOUNT_KEY }} --container-name apnmt-applications --file appointmentservice.zip --name appointmentservice.zip
+            az storage blob upload --account-name apnmt --account-key ${{ secrets.AZURE_ACCOUNT_KEY }} --container-name apnmt-applications --file target/appointmentservice.zip --name appointmentservice.zip
