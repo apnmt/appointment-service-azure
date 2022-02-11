@@ -50,11 +50,9 @@ jobs:
       - name: Download ApplicationInsights Agent
         run: |
           cd target
-          curl https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.6/applicationinsights-agent-3.2.6.jar --output applicationinsights-agent.jar
+          curl -L https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.6/applicationinsights-agent-3.2.6.jar --output applicationinsights-agent.jar
       - name: Zip JARs
         run: |
-          pwd
-          ls -la
           cd target
           mv appointmentservice-${RELEASE_VERSION}.jar appointmentservice.jar
           zip appointmentservice.zip appointmentservice.jar applicationinsights-agent.jar
