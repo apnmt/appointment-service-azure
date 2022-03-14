@@ -12,7 +12,8 @@ import tech.jhipster.config.JHipsterProperties;
 import java.util.HashMap;
 import java.util.Map;
 
-import static tech.jhipster.config.logging.LoggingUtils.*;
+import static tech.jhipster.config.logging.LoggingUtils.addContextListener;
+import static tech.jhipster.config.logging.LoggingUtils.addJsonConsoleAppender;
 
 /*
  * Configures the console and Logstash log appenders from the app properties
@@ -23,7 +24,7 @@ public class LoggingConfiguration {
     public LoggingConfiguration(
         @Value("${spring.application.name}") String appName,
         @Value("${server.port}") String serverPort,
-        @Value("${azure.application-insights.enabled:false}") boolean appInsightsEnabled,
+        @Value("${azure.application-insights.enabled}") boolean appInsightsEnabled,
         @Value("${azure.application-insights.instrumentation-key}") String instrumentationKey,
         JHipsterProperties jHipsterProperties,
         ObjectMapper mapper
@@ -40,9 +41,6 @@ public class LoggingConfiguration {
 
         if (loggingProperties.isUseJsonFormat()) {
             addJsonConsoleAppender(context, customFields);
-        }
-        if (logstashProperties.isEnabled()) {
-            addLogstashTcpSocketAppender(context, customFields, logstashProperties);
         }
         if (appInsightsEnabled) {
             AzureLoggingUtils.addApplicationInsightsAppender(context, instrumentationKey);
